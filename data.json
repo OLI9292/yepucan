@@ -2,10 +2,10 @@
   "nodes": [
     {
       "name": "A",
-      "img": "images/yepucan.png",
+      "img": "images/center-logo.png",
       "group": 1,
       "x": 550,
-      "y": 400,
+      "y": 300,
       "fixed": true
     },
     {
@@ -32,28 +32,28 @@
       "name": "sector_a",
       "group": 2,
       "x": 200,
-      "y": 200,
+      "y": 150,
       "fixed": true
     },
     {
       "name": "sector_b",
       "group": 2,
       "x": 900,
-      "y": 200,
+      "y": 150,
       "fixed": true
     },
     {
       "name": "sector_c",
       "group": 2,
       "x": 200,
-      "y": 600,
+      "y": 450,
       "fixed": true
     },
     {
       "name": "sector_d",
       "group": 2,
       "x": 900,
-      "y": 600,
+      "y": 450,
       "fixed": true
     },
     {
