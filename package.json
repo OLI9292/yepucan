@@ -12,7 +12,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/OLI9292/yepucan.git"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
-
-
