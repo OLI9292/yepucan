@@ -8,7 +8,7 @@ var svg = d3.select("#vis").append("svg")
 var force = d3.layout.force()
     .charge(-50000)
     .friction(.2)
-    .gravity(0.05)
+    .gravity(0.2)
     .size([width, height])
     .linkDistance(function(d) { return d.value })
     .linkStrength(function(l, i) {
@@ -99,4 +99,29 @@ function collide(node) {
     return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
   };
 }
+
+// Smooth scroll when clicking register
+
+window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { 
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { 
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+
 

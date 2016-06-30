@@ -30,6 +30,7 @@
     },
     {
       "name": "sector_a",
+      "img": "images/black-circle.png",
       "group": 2,
       "x": 200,
       "y": 150,
@@ -37,6 +38,7 @@
     },
     {
       "name": "sector_b",
+      "img": "images/black-circle.png",
       "group": 2,
       "x": 900,
       "y": 150,
@@ -44,6 +46,7 @@
     },
     {
       "name": "sector_c",
+      "img": "images/black-circle.png",
       "group": 2,
       "x": 200,
       "y": 450,
@@ -51,6 +54,7 @@
     },
     {
       "name": "sector_d",
+      "img": "images/black-circle.png",
       "group": 2,
       "x": 900,
       "y": 450,

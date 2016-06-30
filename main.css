@@ -26,20 +26,29 @@ input, input[list]:-ms-input-placeholder {
 }
 
 button {
-   font-family: 'Roboto', sans-serif;
-   font-size: 18px;
-   color: #707070;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #707070;
+  height: 43px;
+  border: 1px solid #ccc;
+  width: 150px;
+  border-radius: 10px;
+  padding-top: 5px;
+}
+
+.register button {
+  position: absolute;
+  margin-left: -70px;
+  margin-top: 700px;
+  background-color: white;
 }
 
 .top-logo {
   position: absolute;
   height: auto;
   width: 125px;
-  padding-left: 485px;
-  padding-right: 485px;
-  margin: auto;
+  margin-left: -70px;
   margin-top: 10px;
-
 }
 
 #vis {
@@ -193,14 +202,9 @@ input[list] {
   margin-top: 20px;
 }
 
-button {
+.email-form button {
   background-color: #f2f2f2;
-  height: 43px;
   margin-left: 5px;
-  border-radius:10px;
-  border: 1px solid #ccc;
-  width: 150px;
-  padding-top: 5px;
   margin-bottom: 20px;
 }
 
