@@ -74,7 +74,9 @@ d3.json("data.json", function(error, json) {
       .attr("class", "node");
 
   node.append("circle")
-    .attr("r", 34)
+    .attr("r", function(d, i) { 
+      return (d['group'] === 3) ? 33 : 0;
+    })
     .style("fill", '#506fce');
 
   node.append("image")
