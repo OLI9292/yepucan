@@ -56,8 +56,6 @@ d3.json("data.json", function(error, json) {
   json['nodes'][8]['x'] = 7 * width / 8;
   json['nodes'][8]['y'] = 3 * height / 4;
 
-  console.log(json['nodes'][0]);
-
   force
       .nodes(json.nodes)
       .links(json.links)
@@ -156,6 +154,15 @@ window.smoothScroll = function(target) {
     }
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
+
+// Check brand checkbox if category is selected
+$(".brands").on("input", function() {
+  if ($(".brands").val().length > 0) {
+    $('.brand-checkbox').prop('checked', true);
+  } else {
+    $('.brand-checkbox').prop('checked', false);
+  }
+});
 
 /*
 ** Helper functions
