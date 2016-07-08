@@ -26,7 +26,7 @@ var force = d3.layout.force()
     .charge(-30000)
     .friction(0.15)
     .size([width, height])
-    .linkDistance(function(d) { return d.value })
+    .linkDistance(function(d, i) { return d.value })
     .linkStrength(1.5);
 
 d3.json("data.json", function(error, json) {
@@ -39,24 +39,17 @@ d3.json("data.json", function(error, json) {
     json['links'] = json['links'];
   } else if (screenSize > 750000) {
     json['nodes'] = json['nodes'].slice(0, 25);
-    json['links'] = json['links'].slice(0, 46);
+    json['links'] = json['links'].slice(0, 47);
   } else if (screenSize > 650000) {
     json['nodes'] = json['nodes'].slice(0, 21);
-    json['links'] = json['links'].slice(0, 37);
+    json['links'] = json['links'].slice(0, 38);
   } else if (screenSize > 550000) {
     json['nodes'] = json['nodes'].slice(0, 17);
-    json['links'] = json['links'].slice(0, 27);
-  } else if (screenSize > 450000) {
-    json['nodes'] = json['nodes'].slice(0, 13);
-    json['links'] = json['links'].slice(0, 17);
+    json['links'] = json['links'].slice(0, 28);
   } else {
-    json['nodes'] = json['nodes'].slice(0, 11);
-    json['links'] = json['links'].slice(0, 37);
+    json['nodes'] = json['nodes'].slice(0, 13);
+    json['links'] = json['links'].slice(0, 18);
   }
-
-  console.log(json['nodes']);
-  console.log(screenSize);
-
 
   // Center foci
   json['nodes'][0]['x'] = width / 2;
@@ -140,7 +133,7 @@ d3.json("data.json", function(error, json) {
 
     force.linkStrength(function(l, i) {
       if (closestLinksIndices.indexOf(i) >= 0) {
-        return 3;
+        return 3.2;
       } 
       else {
         return 1.5;
