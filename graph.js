@@ -3,7 +3,7 @@
 */ 
 
 var w = window.innerWidth,
-    h = window.innerHeight - 130,
+    h = window.innerHeight - 145,
     width, height;
 
 if (w < 800) {
@@ -12,8 +12,8 @@ if (w < 800) {
   width = w;
 }
 
-if (h < 450) {
-  height = 450;
+if (h < 550) {
+  height = 550;
 } else {
   height = h;
 }
@@ -24,7 +24,7 @@ var svg = d3.select("#vis").append("svg")
 
 var force = d3.layout.force()
     .charge(-30000)
-    .friction(.15)
+    .friction(0.15)
     .size([width, height])
     .linkDistance(function(d) { return d.value })
     .linkStrength(1.5);
@@ -32,25 +32,51 @@ var force = d3.layout.force()
 d3.json("data.json", function(error, json) {
   if (error) throw error;
 
+  var screenSize = width * height;
+
+  if (screenSize > 850000) {
+    json['nodes'] = json['nodes'];
+    json['links'] = json['links'];
+  } else if (screenSize > 750000) {
+    json['nodes'] = json['nodes'].slice(0, 25);
+    json['links'] = json['links'].slice(0, 46);
+  } else if (screenSize > 650000) {
+    json['nodes'] = json['nodes'].slice(0, 21);
+    json['links'] = json['links'].slice(0, 37);
+  } else if (screenSize > 550000) {
+    json['nodes'] = json['nodes'].slice(0, 17);
+    json['links'] = json['links'].slice(0, 27);
+  } else if (screenSize > 450000) {
+    json['nodes'] = json['nodes'].slice(0, 13);
+    json['links'] = json['links'].slice(0, 17);
+  } else {
+    json['nodes'] = json['nodes'].slice(0, 11);
+    json['links'] = json['links'].slice(0, 37);
+  }
+
+  console.log(json['nodes']);
+  console.log(screenSize);
+
+
   // Center foci
   json['nodes'][0]['x'] = width / 2;
   json['nodes'][0]['y'] = height / 2;
 
   // Top-left foci
-  json['nodes'][5]['x'] = width / 8;
-  json['nodes'][5]['y'] = height / 4;
+  json['nodes'][1]['x'] = width / 5;
+  json['nodes'][1]['y'] = height / 4;
 
   // Top-right foci
-  json['nodes'][6]['x'] = 7 * width / 8;
-  json['nodes'][6]['y'] = height / 4;
+  json['nodes'][2]['x'] = 4 * width / 5;
+  json['nodes'][2]['y'] = height / 4;
 
   // Bottom-left foci
-  json['nodes'][7]['x'] = width / 8;
-  json['nodes'][7]['y'] = 3 * height / 4;
+  json['nodes'][3]['x'] = width / 5;
+  json['nodes'][3]['y'] = 3 * height / 4;
 
   // Bottom-right foci
-  json['nodes'][8]['x'] = 7 * width / 8;
-  json['nodes'][8]['y'] = 3 * height / 4;
+  json['nodes'][4]['x'] = 4 * width / 5;
+  json['nodes'][4]['y'] = 3 * height / 4;
 
   force
       .nodes(json.nodes)
@@ -69,7 +95,7 @@ d3.json("data.json", function(error, json) {
 
   node.append("circle")
     .attr("r", function(d, i) { 
-      return (d['group'] === 3) ? 33 : 0;
+      return (d['group'] === 4) ? 33 : 0;
     })
     .style("fill", '#506fce');
 
